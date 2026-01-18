@@ -1,0 +1,11 @@
+- [ ] Notifier l'opponent que l'autre joueur a gagner
+- [ ] Montrer le guide de tour proprement depuis le debut du jeu en réseau
+- [ ] Colorer les moves
+- [ ] Permettre aux joueurs de choisir leurs caractères (X,O ou pourquoi pas d'autres?)
+- [ ] Notifier l'autre joueur que son adversaire veut rejouer, et resynchroniser l'etat du jeu s'il accepte
+- [ ] Notifier l'autre joueur que son adversaire a quitter le jeu ou hors réseau
+- [ ] Implementer un ou des(selon le niveau choisi) algorithme (s) de selection en cas de score minimax identique entre plusieurs cases (Enhance minimax algorithme)
+- [ ] write test code
+- [ ] Host generate connexion code that the guest should enter to join the game (like a password)
+- [ ] Make the app works using a central server, handle NAT,...
+- [ ] joiner can scan all game available in his network (so game should have names)
