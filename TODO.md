@@ -9,3 +9,5 @@
 - [ ] Host generate connexion code that the guest should enter to join the game (like a password)
 - [ ] Make the app works using a central server, handle NAT,...
 - [ ] joiner can scan all game available in his network (so game should have names)
+- [ ] make winning cases blink
+- [ ] save game state in a sqlite database? Or a text file

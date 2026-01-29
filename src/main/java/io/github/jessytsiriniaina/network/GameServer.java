@@ -20,7 +20,7 @@ public class GameServer {
     public GameServer(int port, TicTacToeManager manager) {
         this.port = port;
         this.manager = manager;
-        new Thread(this::startServer).start();
+        new Thread(this::startServer).start(); //equivalent de Thread(() -> startServer())
     }
 
     private void startServer() {

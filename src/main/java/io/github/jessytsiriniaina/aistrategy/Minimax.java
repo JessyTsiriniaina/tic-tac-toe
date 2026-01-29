@@ -7,8 +7,6 @@ import java.util.List;
 
 public class Minimax {
     private final TicTacToeGame game;
-    private final char[] move = {'X', 'O'};
-    private int currentMove = 1;
 
     public Minimax(TicTacToeGame game) {
         this.game = game;
@@ -17,13 +15,14 @@ public class Minimax {
     public int[] findBestMove() {
         int[] bestMove = new int[2];
         int best_value = Integer.MIN_VALUE;
-        
+
         char[][] grid = game.getGrid();
 
         for(int[] move: getAvailableMove(grid)) {
-            grid[move[0]][move[1]] = this.move[currentMove];
-            //currentMove = currentMove % 2;
-            int value = minimax(grid, true);
+            grid[move[0]][move[1]] = 'O';
+
+            //the next player is not the maximizer
+            int value = minimax(0,false);
             grid[move[0]][move[1]] = ' ';
             if (value > best_value) {
                 bestMove = move;
@@ -36,30 +35,30 @@ public class Minimax {
     }
 
 
-    private int minimax(char[][] grid, boolean isMaximizing) {
-        if(game.hasWinner() && isMaximizing) return 1;
-        else if(game.hasWinner() && !isMaximizing) return -1;
+    private int minimax(int depth, boolean isMaximizing) {
+        if(game.hasWinner() && !isMaximizing) return 10 - depth;
+        else if(game.hasWinner() && isMaximizing) return -10 + depth;
         else if(game.isFull()) return 0;
         else {
             if(isMaximizing) {
                 int max_score = Integer.MIN_VALUE;
-                List<int[]> availableMove= getAvailableMove(grid);
+                List<int[]> availableMove = getAvailableMove(game.getGrid());
                 for (int[] move: availableMove) {
-                    grid[move[0]][move[1]] = 'X';
-                    int value = minimax(grid, false);
+                    game.getGrid()[move[0]][move[1]] = 'O';
+                    int value = minimax(depth + 1,false);
                     max_score = Math.max(max_score, value);
-                    grid[move[0]][move[1]] = ' ';
+                    game.getGrid()[move[0]][move[1]] = ' ';
                 }
                 return max_score;
             }
             else {
                 int min_score = Integer.MAX_VALUE;
-                List<int[]> availableMove= getAvailableMove(grid);
+                List<int[]> availableMove= getAvailableMove(game.getGrid());
                 for (int[] move: availableMove) {
-                    grid[move[0]][move[1]] = 'O';
-                    int value = minimax(grid, true);
+                    game.getGrid()[move[0]][move[1]] = 'X';
+                    int value = minimax(depth + 1, true);
                     min_score = Math.min(min_score, value);
-                    grid[move[0]][move[1]] = ' ';
+                    game.getGrid()[move[0]][move[1]] = ' ';
                 }
                 return min_score;
             }

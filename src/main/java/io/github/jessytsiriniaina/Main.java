@@ -5,7 +5,7 @@ import io.github.jessytsiriniaina.games.TicTacToeGame;
 import io.github.jessytsiriniaina.ui.MainUI;
 
 public class Main {
-    public static void main(String[] args) {
+    static void main(String[] args) {
         TicTacToeGame game = new TicTacToeGame();
         TicTacToeManager manager = new TicTacToeManager(game, null);
         MainUI ui = new MainUI(manager);

@@ -23,4 +23,21 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.5.0</version>  <!-- version récente recommandée -->
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>io.github.jessytsiriniaina.Main</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
